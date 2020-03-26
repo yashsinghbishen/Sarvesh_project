@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: green;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+
+
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .subnav {
+            float: left;
+            overflow: hidden;
+        }
+
+        .subnav .subnavbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover,
+        .subnav:hover .subnavbtn {
+            background-color: red;
+        }
+
+        .subnav-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            background-color: red;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .subnav-content a {
+            float: left;
+            color: white;
+            text-decoration: none;
+        }
+
+        .subnav-content a:hover {
+            background-color: #eee;
+            color: black;
+        }
+
+        .subnav:hover .subnav-content {
+            display: block;
+        }
+
+        .image-container {
+            height: 600px;
+            ;
+            width: 100%;
+            border: 2px solid black;
+            background: silver;
+            margin-top: 5px;
+            color: antiquewhite;
+            background-image: url({% static 'image/banner.jpg' %});
+            background-repeat: repeat-y;
+            background-size: 100% 100%;
+        }
+
+
+
+        .text {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .middleware {
+            height: 900px;
+            ;
+            width: 100%;
+            border: 2px solid black;
+            background: silver;
+            margin-top: 5px;
+            color: black
+        }
+
+        .footer {
+            height: auto;
+            width: 100%;
+            border: black 1px solid;
+            margin-top: 5px;
+            background: Black;
+            color: white
+        }
+
+        .footercontant tr {
+            text-decoration: none;
+        }
+
+        .footercontant table,
+        th,
+        td {
+            border: 0px solid black;
+            border-collapse: collapse;
+
+        }
+
+        .footercontant th,
+        td {
+            padding: 5px;
+            text-align: center;
+
+        }
+
+        .footercontant th {
+            text-align: center;
+            text-decoration: none;
+        }
+
+
+        .fimg {
+            width: 100%;
+            height: 100px;
+            border: red 1px solid;
+            margin-top: 5px;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hed">
+        <center>
+            <h1> Fitness & Diet Chart Plain</h1>
+        </center>
+
+    </div>
+
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <div class="subnav">
+            <button class="subnavbtn">Nutrition <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+                <a href="#company">Men</a>
+                <a href="#team">Women</a>
+
+            </div>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn">Goal <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+                <a href="#bring">weight Gain</a>
+                <a href="#deliver">weight Loss</a>
+
+            </div>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn">Exercises <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+                <a href="#link1">Link 1</a>
+                <a href="#link2">Link 2</a>
+                <a href="#link3">Link 3</a>
+                <a href="#link4">Link 4</a>
+            </div>
+        </div>
+        <a href="#contact">Contact</a>
+        {% if user.is_authenticated %}
+            <a href="/logout/">Sign Out</a>
+        {% else %}
+            <a href="/register/">Sign Up</a>
+            <a href="/login/">Sign In</a>
+        {% endif %}
+
+    </div>
+
+
+
+    <div class="image-container">
+        <div class="text">
+            <h1>BNI CALCULATOR</h1><br>
+            <h3>Gutim comes packed with the user-friendly BMI Calculator
+                shortcode which lets</h3>
+            <input type="button" value="Read More" name="Read More">
+        </div>
+    </div>
+
+
+
+     
+    {% block body %}
+    {% endblock %}
+   
+    <div class="footer">
+        <div class="fimg">
+
+            <img src="{% static 'image/find.png' %}" width="50px" height="50px">
+            <img src="{% static 'image/call.jpg' %}" width="50px" height="50px">
+            <img src="{% static 'image/mail.png' %}" width="50px" height="50px">
+
+
+        </div>
+
+        <div class="footercontant">
+            <table style="width:100%">
+                <tr>
+                    <th><a href="#"> PLAIN</a></th>
+                    <th><a href="#">MORE MUSCLE</a></th>
+                    <th><a href="#">INFO</a></th>
+                </tr>
+                <tr>
+                    <td><a href="#">Workouts</a></td>
+                    <td><a href="#">Subscribe</a></td>
+                    <td><a href="#">About Us</a></td>
+
+
+                </tr>
+                <tr>
+                    <td><a href="#">Nutrition</a></td>
+                    <td><a href="#">Free Newsletters</a></td>
+                    <td><a href="#">Contact Us</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">Features</a></td>
+                    <td><a href="#">Customer Service</a></td>
+                    <td><a href="#">Advertise</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">Videos</a></td>
+                    <td></td>
+                    <td><a href="#">Media Kit</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">Sitemap</a></td>
+                    <td></td>
+                    <td><a href="#">RSS Feed</a></td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
