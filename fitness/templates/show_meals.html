@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>Meal Page</h2>
+
+    {% for meal in meals %} 
+        <h3>{{ meal.name }}</h3>
+        {% for food in meal.foods %}
+            {{food.name}}</br>
+            {{food.calories}}
+        {% endfor %}
+        </br></br></br>
+    {% endfor %}
+
+{% endblock body %}
+

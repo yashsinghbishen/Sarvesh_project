@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from fitness import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='index'),
@@ -23,4 +26,7 @@ urlpatterns = [
     path('home/',views.home, name='home'),
     path('login/',views.signin, name='login'),
     path('logout/',views.logout_request, name='login'),
-]
+    path('diet/<gender>/<fitness_plan>',views.get_meal_list, name='get_meal_list'),
+    path('excercise/<gender>/<fitness_plan>/<fitness_level>/',views.get_excercise_list, name='get_excercise_list'),
+
+] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
