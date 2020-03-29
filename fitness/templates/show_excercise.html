@@ -4,11 +4,13 @@
     <h2>Excercise Page{{ MEDIA_URL }}</h2>
 
     {% for body_part in body_parts %} 
-        <h3>{{ body_part.name }}</h3>
+        <h3>body part name{{ body_part.name }}</h3>
         {% for excercise in body_part.excercises %}
-            {{excercise.excercise.name}} </br>
+        <div class="djhfghjdgsdjh">            excercise name : {{excercise.excercise.name}} </br>
             <img src="{{ MEDIA_URL }}{{excercise.excercise.image}}" ></br>
             {{excercise.reps}}</br>
+        </div>
+
         {% endfor %}
         </br></br></br>
     {% endfor %}

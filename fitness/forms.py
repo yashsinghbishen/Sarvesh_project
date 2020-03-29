@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import *
 
 
 class SignUpForm(UserCreationForm):
@@ -19,3 +20,9 @@ class SingInForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password')
+
+class BmiForm(forms.Form):
+    # name = forms.CharField(required=False)
+    gender = forms.ChoiceField(choices=Gender.options, widget=forms.RadioSelect(), required=True)
+    height = forms.FloatField(label="Height in meters:", required=True, min_value=0)
+    weight = forms.FloatField(label="Weight in kg:", required=True, min_value=0)

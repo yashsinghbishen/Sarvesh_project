@@ -87,3 +87,16 @@ def get_excercise_list(request,gender,fitness_plan, fitness_level):
         body_part_list.append(body_part)
     return render(request,'show_excercise.html', {'body_parts':body_part_list})
 
+
+
+def bmi(request):
+    if request.method == "POST":
+        form = BmiForm(request.POST)
+        if form.is_valid():
+            height = form.cleaned_data["height"]
+            weight = form.cleaned_data["weight"]
+            bmi = weight/height*2
+            return render(request, "bmi.html", {"form": form, "bmi": bmi})
+    else:
+        form = BmiForm()
+    return render(request, "bmi.html", {"form": form})
