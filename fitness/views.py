@@ -99,7 +99,7 @@ def bmi(request):
             gender = form.cleaned_data["gender"]
             height = form.cleaned_data["height"]
             weight = form.cleaned_data["weight"]
-            bmi = weight/height*2
+            bmi = int(weight/height*3.28084)
             print(gender)
             return render(request, "bmi.html", {"bmi": bmi, "gender":gender})
     else:
