@@ -4,21 +4,32 @@
 <div class="login">
   <h1><font color="green">
         Calculate Your BMI
-    </font></h1></div>
-    <div class="loginform">
-   
+    </h1>
+
+    {% if bmi %}
+    <h2>
+        Your BMI is {{bmi}}.</br>
+        {{ gender }}
+        {% if bmi > 100 %}
+            Your bmi is too low than expexted</br>
+            get you gain weight here <a href="/diet/{{ gender }}/lose"> get diet </a>
+            get you Work out plan <a href="/excercise/{{ gender }}/lose"> get diet </a>
+        {% else %}
+            Your bmi is too high than expexted</br>
+            get you gain weight here <a href="/diet/{{ gender }}/gain"> get diet </a>
+            get you Work out plan <a href="/excercise/{{ gender }}/gain"> get diet </a>
+        {% endif %}
+
+    </h2>
+    {% endif %}
 
     <!-- action="." is same as action="/bmi/" -->
-    <form action="." method="POST">
-       Name: <input type="text" name="name">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Calculate" />
-    </form>
-    {% if bmi %}
-    <h2><font color="Red">
-         Your BMI is {{bmi}}.</font>
-    </h2>
+    {% if form %}
+        <form action="." method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Calculate" />
+        </form>
     {% endif %}
 </div>
 {% endblock body %}

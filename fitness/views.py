@@ -19,7 +19,7 @@ def leanmode(request):
 def shreddha(request):
     return render(request, 'shreddha.html')  
 
-def 17inches(request):
+def get_17inches(request):
     return render(request, '17inches.html') 
 
 def diebetes(request):
@@ -80,7 +80,10 @@ def get_meal_list(request,gender,fitness_plan):
         meal_list.append(meal)
     return render(request,'show_meals.html', {'meals':meal_list})
 
-    
+
+def select_excercise_level(request,gender,fitness_plan):
+    return render(request,'select_excercise.html', {'gender':gender, 'fitness_plan':fitness_plan})
+
 
 def get_excercise_list(request,gender,fitness_plan, fitness_level):
     print(gender,fitness_plan, fitness_level)
@@ -111,10 +114,12 @@ def bmi(request):
     if request.method == "POST":
         form = BmiForm(request.POST)
         if form.is_valid():
+            gender = form.cleaned_data["gender"]
             height = form.cleaned_data["height"]
             weight = form.cleaned_data["weight"]
             bmi = weight/height*2
-            return render(request, "bmi.html", {"form": form, "bmi": bmi})
+            print(gender)
+            return render(request, "bmi.html", {"bmi": bmi, "gender":gender})
     else:
         form = BmiForm()
     return render(request, "bmi.html", {"form": form})
