@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block body %}
-  <h2>Sign up</h2>
+<div class="login">
+  <h2>Register Form</h2></div>
+  <div class="loginform">
   <form method="post">
     {% csrf_token %}
     {% for field in form %}
@@ -16,7 +18,10 @@
       {% endfor %}
     </p>
     {% endfor %}
-    <button type="submit">Sign up</button>
+
+    <button type="submit">Submit</button><br><br>
+    Already have an account? <a href="http://127.0.0.1:8000/login/">Login</a>
   </form>
+</div>
 {% endblock body %}
 

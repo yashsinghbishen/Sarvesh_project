@@ -112,7 +112,7 @@
 		margin-left: 50px;
 		margin-top: 48px;
 		float: left;
-		background-image: url(image/about-pic.webp);
+		background-image: url({% static 'image/about-pic.webp' %});
 		}
 	.div1imagecontant{
 		height: 300px;
@@ -136,7 +136,7 @@
 		margin-top: 15px;
 		margin-left: 50px;
 	    float: left;
-	background-image: url(image/trainer-1.webp);
+	background-image: url({% static 'image/trainer-1.webp' %});
 	}
 	.TRAINERSblog2{
 		height: 370px;
@@ -145,7 +145,7 @@
 		margin-top: 15px;
 		margin-left: 150px;
 		float: left;
-		background-image: url(image/trainer-2.webp);
+		background-image: url({% static 'image/trainer-2.webp' %});
 		}
 	.TRAINERSblog3{
 		height:370px;
@@ -154,7 +154,7 @@
 		margin-top: 15px;
 		margin-left: 150px;
 		float: left;
-		background-image: url(image/trainer-3.webp);
+		background-image: url({% static 'image/trainer-3.webp' %});
 		}
 	.TRAINERSblog1txt{
 		height: 123px;
@@ -200,7 +200,7 @@
 		margin-top: 12px;
 		margin-left: 148px;
 	    float: left;
-	background-image: url(image/start.PNG);
+	background-image: url({% static 'image/start.PNG' %});
 	}
 	.TRAINERSicon2{
 		height: 115px;
@@ -209,7 +209,7 @@
 		margin-top: 12px;
 		margin-left: 315px;
 		float: left;
-		background-image: url(image/pencil.PNG);
+		background-image: url({% static 'image/pencil.PNG' %});
 		}
 	.TRAINERSicon3{
 		height:115px;
@@ -218,7 +218,7 @@
 		margin-top: 12px;
 		margin-left: 309px;
 		float: left;
-		background-image: url(image/box.PNG);
+		background-image: url({% static 'image/box.PNG' %});
 		
 		}
 	.TRAINERSicon1txt{
@@ -264,7 +264,7 @@
 		margin-left: 50px;
 		margin-top: 48px;
 		float: left;
-		background-image: url(image/workout.jpg);
+		background-image: url({% static 'image/workout.jpg' %});
 		}
 	.div1imagecontant1{
 		height: 300px;
@@ -295,7 +295,7 @@
 		border: 2px solid black;
 		margin-top: 48px;
 		float: left;
-		background-image: url(image/chicken1.jpg);
+		background-image: url({% static 'image/chicken1.jpg' %});
 		}	
 	.leftrightpost3{
 		    height: 430px;
@@ -312,7 +312,7 @@
 		margin-left: 50px;
 		margin-top: 48px;
 		float: left;
-		background-image: url(image/nuts.webp);
+		background-image: url({% static 'image/nuts.webp' %});
 		}
 	.div1imagecontant3{
 		height: 300px;
@@ -328,7 +328,7 @@
             background: white;
 		    margin-top: 5px;
 		   color: black;
-		  background-image: url(image/banner123.PNG);
+		  background-image: url({% static 'image/banner123.PNG' %});
 	}
 	.footorlogo{
 		height: 163px;
@@ -337,7 +337,7 @@
             background: white;
 		    margin-top: 6px;
 		   color: black;
-		  background-image: url(image/footerlogo.PNG);
+		  background-image: url({% static 'image/footerlogo.PNG' %});
 	}
 
         .footer {
@@ -345,8 +345,10 @@
             width: 100%;
             border: black 1px solid;
             margin-top: 5px;
+            padding: 10px;
             background: Black;
             color: white
+            
         }
 
         .footercontant tr {
@@ -389,9 +391,122 @@
   text-align: center;
 	text-decoration: none;
 }
-        .container{
         
+        .login{
+            border: 1px solid black;
+            background-color: silver;
+            margin-top: 3px;
+            padding: 2px;
+            padding-left: 600px;
+            padding-top: 5px;
+            
         }
+        .loginform{
+            border: 1px solid black;
+            background-color: white;
+            margin-top: 1px;
+            padding: 14px;
+            padding-left: 565px;
+            padding-bottom: 46px;
+        }
+        .goal{
+		height: auto;
+            width: 100%;
+            border: 2px solid black;
+            background: silver;
+		    margin-top: 7px;
+	}
+	.goalheader{
+		height: 50px;
+		width: 100%;
+		background: silver;
+		}
+	.goal1{
+		height: 250px;
+            width: 100%;
+            border: 2px solid black;
+            background: white;
+		    margin: -1px;
+		    
+	}
+	.goal11{
+		height: 200px;
+		width: 250px;
+		border: 2px solid black;
+		background: silver;
+		margin-top: 14px;
+		margin-left: 54px;
+		float: left;
+		
+	}
+	.goal12{
+		height: 200px;
+		width: 810px;
+		border: 2px solid black;
+		background: silver;
+		margin-top: 14px;
+		margin-left: 2px;
+		float: left
+		}
+	.goal13{
+		height: 200px;
+		width: 155px;
+		border: 2px solid black;
+		background: silver;
+		margin-top: 14px;
+		margin-left: 1px;
+		float: left;
+		}
+		.main{
+		height: auto;
+        width: 100%;
+		background-color: silver;
+		border: 2px solid black;
+	}
+	.goalh1{
+		height: 71px;
+        width: 100%;
+		border: 1px solid black;
+		margin-top: 10px;
+		background-color: white;
+	}
+	.goalh1banner{
+		height: 425px;
+        width: 100%;
+		border: 2px solid black;
+		margin-top: 2px;
+		background-color: white;
+		background-image: url(image/goal.jpg)
+	}
+	
+	.goalh1txt{
+		height: auto;
+        width: 650px;
+		background-color: silver;
+		border: 1px solid black;
+		margin-top: 1px;
+		margin-left: -2px;
+		float: left;
+	}
+	.goalh2txt{
+		height: auto;
+        width: 679px;
+		background-color: silver;
+		border: 1px solid black;
+		
+		margin-left: 2px;
+		float: left;
+		text-align: center;
+	}
+	.goalh1txt table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.goalh1txt th, td {
+  padding: 3px;
+  text-align: left;    
+}
+	
     </style>
 </head>
 
@@ -416,8 +531,7 @@
         <div class="subnav">
             <button class="subnavbtn">Goal <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
-                <a href="#bring">weight Gain</a>
-                <a href="#deliver">weight Loss</a>
+                
 
             </div>
         </div>
@@ -440,19 +554,7 @@
 
     </div>
 
-
-
-    <div class="image-container">
-        <div class="text">
-            <h1>BNI CALCULATOR</h1><br>
-            <h3>Gutim comes packed with the user-friendly BMI Calculator
-                shortcode which lets</h3>
-            <input type="button" value="CALCULATOR" name="Read More">
-        </div>
-    </div>
-
-
-
+    
      
     {% block body %}
     {% endblock %}

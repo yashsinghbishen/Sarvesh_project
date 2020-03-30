@@ -24,10 +24,16 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('register/',views.signup, name='registration'),
     path('home/',views.home, name='home'),
+    path('goal/',views.goal, name='goal'),
+    path('leanmode/',views.leanmode, name='leanmode'),
+    path('shreddha/',views.shreddha, name='shreddha'),
+    path('17inches/',views.17inches, name='17inches'),
+    path('diebetes/',views.diebetes, name='diebetes'),
+    path('fightcancer/',views.fightcancer, name='fightcancer'),
     path('login/',views.signin, name='login'),
     path('logout/',views.logout_request, name='login'),
     path('bmi/',views.bmi, name='bmi'),
     path('diet/<gender>/<fitness_plan>',views.get_meal_list, name='get_meal_list'),
     path('excercise/<gender>/<fitness_plan>/<fitness_level>/',views.get_excercise_list, name='get_excercise_list'),
-
+    
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

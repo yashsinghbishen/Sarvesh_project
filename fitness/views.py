@@ -10,6 +10,24 @@ def index(request):
 def home(request):
     return render(request, 'home.html')
 
+def goal(request):
+    return render(request, 'goal1.html')
+
+def leanmode(request):
+    return render(request, 'leanmode.html') 
+
+def shreddha(request):
+    return render(request, 'shreddha.html')  
+
+def 17inches(request):
+    return render(request, '17inches.html') 
+
+def diebetes(request):
+    return render(request, 'diebetes.html') 
+
+def fightcancer(request):
+    return render(request, 'fightcancer.html')               
+
 def logout_request(request):
     logout(request)
     return render(request, 'index.html')
@@ -100,3 +118,5 @@ def bmi(request):
     else:
         form = BmiForm()
     return render(request, "bmi.html", {"form": form})
+
+   
