@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="middleware">
+    <h1>Index Page</h1>
+
+    <h1>
+        select excercise level
+    </h1>
+
+    <a href="/excercise/{{ gender }}/{{ fitness_plan }}/beginer/">beginer</a>
+    <a href="/excercise/{{ gender }}/{{ fitness_plan }}/intermidiate/">intermidiate</a>
+    <a href="/excercise/{{ gender }}/{{ fitness_plan }}/advance/">advance</a>
+
+</div>
+{% endblock body %}

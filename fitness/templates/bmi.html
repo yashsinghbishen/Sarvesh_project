@@ -10,15 +10,28 @@
 
     {% if bmi %}
     <h2>
-        Your BMI is {{bmi}}.
+        Your BMI is {{bmi}}.</br>
+        {{ gender }}
+        {% if bmi > 100 %}
+            Your bmi is too low than expexted</br>
+            get you gain weight here <a href="/diet/{{ gender }}/lose"> get diet </a>
+            get you Work out plan <a href="/excercise/{{ gender }}/lose"> get diet </a>
+        {% else %}
+            Your bmi is too high than expexted</br>
+            get you gain weight here <a href="/diet/{{ gender }}/gain"> get diet </a>
+            get you Work out plan <a href="/excercise/{{ gender }}/gain"> get diet </a>
+        {% endif %}
+
     </h2>
     {% endif %}
 
     <!-- action="." is same as action="/bmi/" -->
-    <form action="." method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Calculate" />
-    </form>
+    {% if form %}
+        <form action="." method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Calculate" />
+        </form>
+    {% endif %}
 </div>
 {% endblock body %}

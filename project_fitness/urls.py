@@ -28,6 +28,7 @@ urlpatterns = [
     path('logout/',views.logout_request, name='login'),
     path('bmi/',views.bmi, name='bmi'),
     path('diet/<gender>/<fitness_plan>',views.get_meal_list, name='get_meal_list'),
+    path('excercise/<gender>/<fitness_plan>',views.select_excercise_level, name='select_excercise'),
     path('excercise/<gender>/<fitness_plan>/<fitness_level>/',views.get_excercise_list, name='get_excercise_list'),
 
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
