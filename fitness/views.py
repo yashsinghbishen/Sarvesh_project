@@ -2,38 +2,14 @@ from django.shortcuts import render, redirect
 from .forms import *
 from django.contrib.auth import login, authenticate, logout
 from .models import *
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 
 def index(request):
     return render(request, 'index.html')
 
-def home(request):
-    return render(request, 'home.html')
-
-def goal(request):
-    return render(request, 'goal1.html')
-
-def exericelist(request):
-    return render(request, 'exericelist.html')    
-
-def leanmode(request):
-    return render(request, 'leanmode.html') 
-
-def shreddha(request):
-    return render(request, 'shreddha.html')  
-
-def get_17inches(request):
-    return render(request, '17inches.html') 
-
-def diebetes(request):
-    return render(request, 'diebetes.html') 
-
-def fightcancer(request):
-    return render(request, 'fightcancer.html')               
-
-def logout_request(request):
-    logout(request)
-    return render(request, 'index.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -49,6 +25,7 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'rigisteration.html', {'form': form})
 
+
 def signin(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -60,8 +37,56 @@ def signin(request):
         form = SingInForm()
     return render(request, 'login.html', {'form': form})
 
-def get_meal_list(request,gender,fitness_plan):
-    print(gender,fitness_plan)
+
+@login_required(login_url='/login/')
+def home(request):
+    return render(request, 'home.html')
+
+
+@login_required(login_url='/login/')
+def goal(request):
+    return render(request, 'goal1.html')
+
+
+@login_required(login_url='/login/')
+def exericelist(request):
+    return render(request, 'exericelist.html')
+
+
+@login_required(login_url='/login/')
+def leanmode(request):
+    return render(request, 'leanmode.html')
+
+
+@login_required(login_url='/login/')
+def shreddha(request):
+    return render(request, 'shreddha.html')
+
+
+@login_required(login_url='/login/')
+def get_17inches(request):
+    return render(request, '17inches.html')
+
+
+@login_required(login_url='/login/')
+def diebetes(request):
+    return render(request, 'diebetes.html')
+
+
+@login_required(login_url='/login/')
+def fightcancer(request):
+    return render(request, 'fightcancer.html')
+
+
+@login_required(login_url='/login/')
+def logout_request(request):
+    logout(request)
+    return render(request, 'index.html')
+
+
+@login_required(login_url='/login/')
+def get_meal_list(request, gender, fitness_plan):
+    print(gender, fitness_plan)
     meals = Meal.objects.filter(
         pk__in=FoodMealGoal.objects.filter(
             goal__gender=gender,
@@ -78,18 +103,20 @@ def get_meal_list(request,gender,fitness_plan):
                 meal__id=meal['id']
             ).values('food')
         )
-        meal.update({'foods':foods})
+        meal.update({'foods': foods})
         print(meal)
         meal_list.append(meal)
-    return render(request,'show_meals.html', {'meals':meal_list})
+    return render(request, 'show_meals.html', {'meals': meal_list})
 
 
-def select_excercise_level(request,gender,fitness_plan):
-    return render(request,'select_excercise.html', {'gender':gender, 'fitness_plan':fitness_plan})
+@login_required(login_url='/login/')
+def select_excercise_level(request, gender, fitness_plan):
+    return render(request, 'select_excercise.html', {'gender': gender, 'fitness_plan': fitness_plan})
 
 
-def get_excercise_list(request,gender,fitness_plan, fitness_level):
-    print(gender,fitness_plan, fitness_level)
+@login_required(login_url='/login/')
+def get_excercise_list(request, gender, fitness_plan, fitness_level):
+    print(gender, fitness_plan, fitness_level)
     body_parts = BodyPart.objects.filter(
         pk__in=BodyPartExcercise.objects.filter(
             gender=gender,
@@ -97,22 +124,49 @@ def get_excercise_list(request,gender,fitness_plan, fitness_level):
             fitness_level=fitness_level
         ).values('body_part')
     )
-    print(body_parts)
-    body_part_list = []
-    for body_part in body_parts.values():
-        excercises = BodyPartExcercise.objects.filter(
-            gender=gender,
-            fitness_plan=fitness_plan,
-            fitness_level=fitness_level,
-            body_part=body_part['id']
-        )
-        body_part.update({'excercises':excercises})
-        print(body_part)
-        body_part_list.append(body_part)
-    return render(request,'show_excercise.html', {'body_parts':body_part_list})
+    # print(body_parts)
+    # body_part_list = []
+    # for body_part in body_parts.values():
+    #     excercises = BodyPartExcercise.objects.filter(
+    #         gender=gender,
+    #         fitness_plan=fitness_plan,
+    #         fitness_level=fitness_level,
+    #         body_part=body_part['id']
+    #     )
+    #     body_part.update({'excercises':excercises})
+    #     print(body_part)
+    #     body_part_list.append(body_part)
+    return render(request, 'show_excercise.html', {
+        'gender': gender,
+        'fitness_plan': fitness_plan,
+        'fitness_level': fitness_level,
+        'body_parts': body_parts
+    })
+
+
+@login_required(login_url='/login/')
+def get_excercise_detail(request, gender, fitness_plan, fitness_level, body_part):
+    print(gender, fitness_plan, fitness_level)
+    body_part = BodyPart.objects.get(pk=body_part)
+ 
+    excercises = BodyPartExcercise.objects.filter(
+        gender=gender,
+        fitness_plan=fitness_plan,
+        fitness_level=fitness_level,
+        body_part=body_part
+    )
+    return render(request, 'show_excercise_detail.html', {
+        'gender': gender,
+        'fitness_plan': fitness_plan,
+        'fitness_level': fitness_level,
+        'body_part': body_part,
+        'excercises': excercises,
+    })
 
 
 
+
+@login_required(login_url='/login/')
 def bmi(request):
     if request.method == "POST":
         form = BmiForm(request.POST)
@@ -122,9 +176,7 @@ def bmi(request):
             weight = form.cleaned_data["weight"]
             bmi = int(weight/((height*0.305)*(height*0.305)))
             print(gender)
-            return render(request, "bmi.html", {"bmi": bmi, "gender":gender})
+            return render(request, "bmi.html", {"bmi": bmi, "gender": gender})
     else:
         form = BmiForm()
     return render(request, "bmi.html", {"form": form})
-
-   

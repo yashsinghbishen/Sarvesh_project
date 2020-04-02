@@ -37,5 +37,6 @@ urlpatterns = [
     path('diet/<gender>/<fitness_plan>',views.get_meal_list, name='get_meal_list'),
     path('excercise/<gender>/<fitness_plan>',views.select_excercise_level, name='select_excercise'),
     path('excercise/<gender>/<fitness_plan>/<fitness_level>/',views.get_excercise_list, name='get_excercise_list'),
+    path('excercise/<gender>/<fitness_plan>/<fitness_level>/<body_part>/',views.get_excercise_detail, name='get_excercise_detail'),
     
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

@@ -2,8 +2,8 @@
 
 {% block body %}
 <div class="excercisedisplaymain">
-    <h2>{{ MEDIA_URL }}</h2>
-
+    
+{% comment %} 
     {% for body_part in body_parts %}
 
     <a href="/excercise/{{ gender }}/{{ fitness_plan }}/{{ fitness_level}}/{{ body_part.pk }}/">
@@ -13,11 +13,11 @@
             </font>
         </center>
     </a>
-    <hr>
-    {% comment %} <div class="bodypartname">
+    <hr> {% endcomment %}
+    <div class="bodypartname">
         <h3>Body Part Name : {{ body_part.name }}</h3>
     </div>
-    {% for excercise in body_part.excercises %}
+    {% for excercise in excercises %}
 
     <div class="excercisedisplay">
         <h3>Excercise name</h3> <br><br> {{excercise.excercise.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -32,7 +32,7 @@
     </div>
 
     {% endfor %}
-    </br></br></br> {% endcomment %}
-    {% endfor %}
+    </br></br></br>
+    {% comment %} {% endfor %} {% endcomment %}
 </div>
 {% endblock body %}
