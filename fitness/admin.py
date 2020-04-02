@@ -28,4 +28,7 @@ admin.site.register(BodyPart)
 admin.site.register(Equipment)
 admin.site.register(Excercise,ExcerciseAdmin)
 admin.site.register(BodyPartExcercise, BodyPartExcerciseAdmin)
+admin.site.site_header = "Fitness & Diet Admin"
+admin.site.site_title = "Fitness & Diet Chart Portal"
+admin.site.index_title = "Welcome to Fitness & Diet Chart Plan"
 # admin.site.register()

@@ -4,23 +4,97 @@
 <div class="login">
   <h1><font color="green">
         Calculate Your BMI
-    </h1>
-
+    </h1> </div>
+    <div class="loginform">
     {% if bmi %}
     <h2>
-        Your BMI is {{bmi}}.</br>
+        Your BMI is {{bmi}}.&nbsp;
         {{ gender }}
-        {% if bmi > 100 %}
-            Your bmi is too low than expexted</br>
-            get you gain weight here <a href="/diet/{{ gender }}/lose"> get diet </a>
-            get you Work out plan <a href="/excercise/{{ gender }}/lose"> get diet </a>
+        
+        
+        {% if bmi >= 16 and bmi < 18.5 %}
+            Your weight is Underweight</br>
+            Get you gain weight here <a href="/diet/{{ gender }}/gain"> get Nutrition </a></br></br>
+            Get you Workout plan <a href="/excercise/{{ gender }}/gain"> get Workout </a>
+
+        {% elif  bmi >= 18.5 and bmi < 25 %}
+            Your weight is Healthy</br></br>
+            Get you gain weight here <a href="/diet/{{ gender }}/gain"> get Nutrition </a></br></br>
+            Get you Workout plan <a href="/excercise/{{ gender }}/gain"> get Workout </a> 
+
+        {% elif  bmi >= 25 and bmi < 30 %}
+            Your weight is Overweight</br>
+            Get you Loss weight here <a href="/diet/{{ gender }}/gain"> get Nutrition </a></br></br>
+            Get you Workout plan <a href="/excercise/{{ gender }}/gain"> get Workout </a> 
+
         {% else %}
             Your bmi is too high than expexted</br>
-            get you gain weight here <a href="/diet/{{ gender }}/gain"> get diet </a>
-            get you Work out plan <a href="/excercise/{{ gender }}/gain"> get diet </a>
+            get you Loss weight here <a href="/diet/{{ gender }}/lose"> get Nutrition </a></br></br>
+            get you Workout plan <a href="/excercise/{{ gender }}/lose"> get Workout </a>
         {% endif %}
 
     </h2>
+
+    <div class="BMIchart">
+        <table style="height: 258px; border-color: green; width: 568px; margin-left: auto; margin-right: auto;" border="0.5" cellspacing="10"><caption>
+    <font color="green"><h1>Body Mass Index</h1></font><hr>
+    </caption>
+            
+    <tbody>
+        
+    <tr style="height: 22px;">
+    <td style="width: 276px; height: 22px;">
+    <h2><strong><center>Weight Status</center></strong></h2>
+    </td>
+    <td style="width: 276px; height: 22px;">
+    <h2><strong><center>Body Mass Index</center></strong></h2>
+    </td>
+    </tr>
+    <tr style="height: 22px;">
+    <td style="width: 276px; height: 22px;">
+        <h3><strong><center>Over&nbsp;Underweight</center></strong></h3>
+    </td>
+    <td style="width: 276px; height: 22px;">
+    <h3><strong><center>Below 16</center></strong></h3>
+    </td>
+    </tr>
+    <tr style="height: 22px;">
+    <td style="width: 276px; height: 22px;">
+    <div><strong><center>Underweight</center></strong></div>
+    </td>
+    <td style="width: 276px; height: 22px;">
+    <h3><strong><center>16.0 To 18.5</center></strong></h3>
+    </td>
+    </tr>
+    <tr style="height: 22px;">
+    <td style="width: 276px; height: 22px;">
+    <div><strong><center>Healthy</center></strong></div>
+    </td>
+    <td style="width: 276px; height: 22px;">
+    <h3><strong><center>18.5 To 25</center></strong></h3>
+    </td>
+    </tr>
+    <tr style="height: 22px;">
+    <td style="width: 276px; height: 22px;">
+    <div><strong><center>Overweight</center></strong></div>
+    </td>
+    <td style="width: 276px; height: 22px;">
+    <h3><strong><center>25 To 30</center></strong></h3>
+    </td>
+    </tr>
+    <tr style="height: 22px;">
+    <td style="width: 276px; height: 22px;">
+    <div><strong><center>Too&nbsp;high</center></strong></div>
+    </td>
+    <td style="width: 276px; height: 22px;">
+    <h3><strong><center>30 to Above</center></strong></h3>
+    </td>
+    </tr>
+            
+    </tbody>
+                
+    </table>
+        </div>
     {% endif %}
 
     <!-- action="." is same as action="/bmi/" -->

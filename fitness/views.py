@@ -13,6 +13,9 @@ def home(request):
 def goal(request):
     return render(request, 'goal1.html')
 
+def exericelist(request):
+    return render(request, 'exericelist.html')    
+
 def leanmode(request):
     return render(request, 'leanmode.html') 
 
@@ -117,7 +120,7 @@ def bmi(request):
             gender = form.cleaned_data["gender"]
             height = form.cleaned_data["height"]
             weight = form.cleaned_data["weight"]
-            bmi = int(weight/height*3.28084)
+            bmi = int(weight/((height*0.305)*(height*0.305)))
             print(gender)
             return render(request, "bmi.html", {"bmi": bmi, "gender":gender})
     else:

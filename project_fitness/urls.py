@@ -27,6 +27,7 @@ urlpatterns = [
     path('goal/',views.goal, name='goal'),
     path('leanmode/',views.leanmode, name='leanmode'),
     path('shreddha/',views.shreddha, name='shreddha'),
+    path('exericelist/',views.exericelist, name='shreddha'),
     path('17inches/',views.get_17inches, name='17inches'),
     path('diebetes/',views.diebetes, name='diebetes'),
     path('fightcancer/',views.fightcancer, name='fightcancer'),
