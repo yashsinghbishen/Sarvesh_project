@@ -42,6 +42,13 @@ def signin(request):
 def home(request):
     return render(request, 'home.html')
 
+@login_required(login_url='/login/')
+def goal(request):
+    return render(request, 'exericelist.html')   
+
+@login_required(login_url='/login/')
+def Nutritiondetails(request):
+    return render(request, 'Nutritiondetails.html')      
 
 @login_required(login_url='/login/')
 def goal(request):

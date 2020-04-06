@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="excercisedisplaymain">
+     <div class="login"><h1>Exercise List</h1> </div>
+<div class="showmeal  ">
     <h2>{{ MEDIA_URL }}</h2>
 
     {% for body_part in body_parts %}
-
+    
     <a href="/excercise/{{ gender }}/{{ fitness_plan }}/{{ fitness_level}}/{{ body_part.pk }}/">
         <center>
             <font color="green">
@@ -14,7 +15,7 @@
         </center>
     </a>
     <hr>
-    {% comment %} <div class="bodypartname">
+    {% comment %} <div class="bodypartname   ">
         <h3>Body Part Name : {{ body_part.name }}</h3>
     </div>
     {% for excercise in body_part.excercises %}

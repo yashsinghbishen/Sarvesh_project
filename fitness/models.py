@@ -25,6 +25,7 @@ class FitnessLevel:
     beginer = 'beginer'
     intermediate = 'intermediate'
     advance = 'advance'
+    
 
     options = [
         (beginer, beginer),

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="excercisedisplaymain">
+<div class="excercisedisplaymain  ">
     
 {% comment %} 
     {% for body_part in body_parts %}
@@ -14,25 +14,19 @@
         </center>
     </a>
     <hr> {% endcomment %}
-    <div class="bodypartname">
+    <div class="bodypartname   ">
         <h3>Body Part Name : {{ body_part.name }}</h3>
     </div>
     {% for excercise in excercises %}
-
+      
     <div class="excercisedisplay">
-        <h3>Excercise name</h3> <br><br> {{excercise.excercise.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </div>
-
-    <div class="excerciserapsdisplay">
-        <h3>Excercise Raps</h3> <br><br> {{excercise.reps}}
-    </div>
-
-    <div class="excerciseimagedisplay">
-        <h3>Image</h3> <br><br> <img src="\media\{{excercise.excercise.image}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
-    </div>
+        <h3>Excercise name</h3> <br><br> {{excercise.excercise.name}}<hr> 
+         <h3>Excercise Raps</h3> <br><br> {{excercise.reps}}<hr>
+         <h3>Image</h3> <br><br> <img src="\media\{{excercise.excercise.image}}"><hr>
+    
 
     {% endfor %}
-    </br></br></br>
+    </br></br></br></div>
     {% comment %} {% endfor %} {% endcomment %}
 </div>
 {% endblock body %}

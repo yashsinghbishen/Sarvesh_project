@@ -1,16 +1,24 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <h2>Meal Page</h2>
+ 
+  <div class="showmeal">
+  <div class="login">
+    <h1>Nutrition Plan</h1></div>
 
     {% for meal in meals %} 
-        <h3>{{ meal.name }}</h3>
+        <font color="green"><h1>{{ meal.name }}</h1></font>
+          <div class="mealtxtdegine">
+   <h3>
         {% for food in meal.foods %}
-            {{food.name}}</br>
-            {{food.calories}}
+            Food:- {{food.name}}<br><br>
+            Calories:{{food.calories}}<hr>
         {% endfor %}
-        </br></br></br>
+    </h3></br>
+  
+</div>
     {% endfor %}
-
+    <p>NOTE: Remember to drink between 10 to 12 glasses of water per day</p>
+</div>
 {% endblock body %}
 
