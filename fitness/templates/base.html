@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-
+{% load load_header %}
 <html>
 
 <head>
@@ -724,9 +724,22 @@
 			       
         
 		<a href="/goal">Goal</a>
-		<a href="/Nutritiondetails">Nutrition</a>
-		
-		<a href="/exericelist">Exercises</a>
+		<!-- <a href="/Nutritiondetails">Nutrition</a> -->
+		<div class="wrapper row4">
+			<nav id="mainav" class="hoc clear">
+			  <ul class="clear">
+					{% load_excercises %}
+			  </ul>
+			</nav>
+		</div>
+		<div class="wrapper row4">
+			<nav id="mainav" class="hoc clear"> 
+			  <ul class="clear">
+				 {% load_diet %}
+			  </ul>
+			</nav>
+		</div>
+		<!-- <a href="/exericelist">Exercises</a> -->
         {% if user.is_authenticated %}
             <a href="/logout/">Sign Out</a>
         {% else %}
