@@ -1,0 +1,18 @@
+<li class="dropdown">
+    <a>Nutritation</a>
+    <ul>
+        {% for gender in genders %}
+            <li class="dropdown">
+                <a>{{gender}}</a>
+                <ul class="dropdown-menu">
+                    {% for fitness_plan in fitness_plans %}
+                        <li class="dropdown">
+                            <a href="/diet/{{ gender }}/{{fitness_plan}}">{{fitness_plan}} </a>
+                        </li>   
+                    {% endfor %}    
+                </ul>
+            </li>    
+        {% endfor %}
+    </ul>
+</li>
+    
