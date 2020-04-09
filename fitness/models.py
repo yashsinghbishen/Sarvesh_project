@@ -10,6 +10,14 @@ class Gender:
         (female, female),
     ]
 
+class Category:
+    veg = 'Veg'
+    non_veg = 'Non-Veg'
+
+    options = [
+        (veg, veg),
+        (non_veg, non_veg)
+    ]
 
 class FitnessPlan:
     gain = 'gain'
@@ -99,3 +107,16 @@ class BodyPartExcercise(models.Model):
     def __str__(self):
         return f'{self.excercise.name} for {self.body_part.name}'
     
+class ExcercisePost(models.Model):
+    gender = models.CharField(choices=Gender.options, max_length=20, default=Gender.male)
+    body_part = models.ForeignKey(BodyPart, on_delete=models.CASCADE)
+    excercise = models.ForeignKey(Excercise, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='excercises_post',null=True)
+    description = models.CharField(max_length=255)
+    
+class FoodPost(models.Model):
+    gender = models.CharField(choices=Gender.options, max_length=20, default=Gender.male)
+    category = models.CharField(choices=Category.options, max_length=10, default=Category.veg)
+    food = models.ForeignKey(Food, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='diet_post',null=True)
+    description = models.CharField(max_length=255)

@@ -172,6 +172,29 @@ def get_excercise_detail(request, gender, fitness_plan, fitness_level, body_part
 
 
 
+@login_required(login_url='/login/')
+def excercise_posts(request, gender):
+
+    excercises = ExcercisePost.objects.filter(
+        gender=gender
+    )
+    return render(request, 'excercise_posts.html', {
+        'excercises': excercises,
+    })
+
+
+@login_required(login_url='/login/')
+def diet_posts(request, gender):
+
+    diets = FoodPost.objects.filter(
+        gender=gender
+    )
+    return render(request, 'diet_posts.html', {
+        'diets': diets,
+    })
+
+
+
 
 @login_required(login_url='/login/')
 def bmi(request):

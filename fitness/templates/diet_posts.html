@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="login">
+    <h1>Exercise List</h1>
+</div>
+<div class="showmeal  ">
+    {% for diet in diets %}
+
+        gender : {{diet.gender}}</br>
+        category : {{diet.category}}</br>
+        food : {{diet.food.name}}</br>
+        <img src="/media/{{diet.image}}"></br>
+        description : {{diet.description}}
+        </br></br><br>
+        
+    {% endfor %}
+</div>
+{% endblock body %}

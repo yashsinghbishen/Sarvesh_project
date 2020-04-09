@@ -12,6 +12,78 @@
             background: green;
         }
 
+		body {
+		margin: 0;
+		font-family: Arial, Helvetica, sans-serif;
+			background: green;
+		}
+
+		h1 {
+			font-size: 40px;
+			text-align: center;
+			color: #FFF;
+			margin-top: 5px;
+			font-family: 'Russo One', sans-serif;
+			}
+		h1 span {
+			color: #FF4649;
+		}
+		#container {
+			margin: 0 auto;
+		}
+		
+		nav {
+			margin: 35px 0;
+			background-color: #FF4649;
+		}
+		nav ul {
+			padding: 0;
+				margin-bottom: -35px;
+			list-style: none;
+			position: relative;
+			
+			}	
+		nav ul li {
+			display:inline-block;
+			background-color: #FF4649;
+			}
+		nav a {
+			display:block;
+			padding:0 10px;	
+			color:#FFF;
+			font-size:15px;
+			line-height: 60px;
+			text-decoration:none;
+		}
+		nav a:hover { 
+			background-color: #333; 
+		}
+		nav ul ul {
+			display: none;
+			position: absolute; 
+			top: 60px; 	
+		}	
+		nav ul li:hover > ul {
+			display:inherit;
+		}	
+		nav ul ul li {
+			width:230px;
+			float:none;
+			display:list-item;
+			position: relative;
+		}
+		nav ul ul ul li {
+			position: relative;
+			top:-60px; 
+			left:230px;
+		}
+		nav ul ul li {
+			border: 1px solid white;
+		}	
+		li > a:after { content:  ' ▼'; }
+		li > a:only-child:after { content: ''; }
+
+
         .navbar {
             overflow: hidden;
             background-color: #333;
@@ -713,40 +785,54 @@
         </center>
 
     </div>
-
-    <div class="navbar">
-		<a href="/">Home</a>
-		<div class="subnav">
-			<i class="fa fa-caret-down"></i>
-			<div class="subnav-content">
-			  </div>
-		</div> 
-			       
-        
-		<a href="/goal">Goal</a>
-		<!-- <a href="/Nutritiondetails">Nutrition</a> -->
-		<div class="wrapper row4">
-			<nav id="mainav" class="hoc clear">
-			  <ul class="clear">
-					{% load_excercises %}
-			  </ul>
-			</nav>
-		</div>
-		<div class="wrapper row4">
-			<nav id="mainav" class="hoc clear"> 
-			  <ul class="clear">
-				 {% load_diet %}
-			  </ul>
-			</nav>
-		</div>
-		<!-- <a href="/exericelist">Exercises</a> -->
-        {% if user.is_authenticated %}
-            <a href="/logout/">Sign Out</a>
-        {% else %}
-            <a href="/register/">Sign Up</a>
-            <a href="/login/">Sign In</a>
-        {% endif %}
-
+	
+	<div id="container">
+		<nav>
+			<ul>
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="/goal">Goal</a>
+				</li>
+				{% load_excercises %}
+				{% load_diet %}
+				<li>
+					<a href="#">Excercise Posts</a>
+					<ul>
+						<li>
+							<a href="/excercise/male">Male</a>
+						</li>
+						<li>
+							<a href="/excercise/female">Female</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Diet Posts</a>
+					<ul>
+						<li>
+							<a href="/diet/male">Male</a>
+						</li>
+						<li>
+							<a href="/diet/female">Female</a>
+						</li>
+					</ul>
+				</li>
+				{% if user.is_authenticated %}
+					<li>
+						<a href="/logout/">Sign Out</a>
+					</li>
+				{% else %}
+					<li>
+						<a href="/register/">Sign Up</a>
+					</li>
+					<li>
+						<a href="/login/">Sign In</a>
+					</li>
+				{% endif %}
+			</ul>
+		</nav>
     </div>
 
     

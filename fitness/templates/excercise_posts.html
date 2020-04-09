@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="login">
+    <h1>Exercise List</h1>
+</div>
+<div class="showmeal  ">
+    {% for excercise in excercises %}
+
+        gender : {{excercise.gender}}</br>
+        body part : {{excercise.body_part.name}}</br>
+        Excercise name : {{excercise.excercise.name}}</br>
+        <img src="/media/{{excercise.image}}"></br>
+        description : {{excercise.description}}
+        </br></br><br>
+        
+    {% endfor %}
+</div>
+{% endblock body %}
