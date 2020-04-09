@@ -3,7 +3,7 @@ from .forms import *
 from django.contrib.auth import login, authenticate, logout
 from .models import *
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -178,10 +178,14 @@ def excercise_posts(request, gender):
     excercises = ExcercisePost.objects.filter(
         gender=gender
     )
+    excercises = Paginator(excercises, 1)
+    page_number = request.GET.get('page')
+    excercises = excercises.get_page(page_number)
+
     return render(request, 'excercise_posts.html', {
         'excercises': excercises,
     })
-
+    
 
 @login_required(login_url='/login/')
 def diet_posts(request, gender):
@@ -189,6 +193,10 @@ def diet_posts(request, gender):
     diets = FoodPost.objects.filter(
         gender=gender
     )
+    diets = Paginator(diets, 1)
+    page_number = request.GET.get('page')
+    diets = diets.get_page(page_number)
+
     return render(request, 'diet_posts.html', {
         'diets': diets,
     })

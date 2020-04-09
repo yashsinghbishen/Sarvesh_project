@@ -7,13 +7,30 @@
 <div class="showmeal  ">
     {% for diet in diets %}
 
-        gender : {{diet.gender}}</br>
-        category : {{diet.category}}</br>
-        food : {{diet.food.name}}</br>
-        <img src="/media/{{diet.image}}"></br>
-        description : {{diet.description}}
-        </br></br><br>
-        
+    gender : {{diet.gender}}</br>
+    category : {{diet.category}}</br>
+    food : {{diet.food.name}}</br>
+    <img src="/media/{{diet.image}}"></br>
+    description : {{diet.description}}
+    </br></br><br>
+
     {% endfor %}
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if diets.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ diets.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ diets.number }} of {{ diets.paginator.num_pages }}.
+        </span>
+
+        {% if diets.has_next %}
+        <a href="?page={{ diets.next_page_number }}">next</a>
+        <a href="?page={{ diets.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
 </div>
 {% endblock body %}
